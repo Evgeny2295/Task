@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,12 +35,26 @@
                         <div class="panel-content">
                             <div class="panel-content">
                                 <div class="form-group">
+                                    <?php if(!empty($_SESSION['danger'])):?>
                                     <div class="alert alert-danger fade show" role="alert">
-                                        You should check in on some of those fields below.
+                                        <?=$_SESSION['danger']?>
+                                        <?php unset ($_SESSION['danger'])?>
                                     </div>
-                                    <form action="">
-                                        <label class="form-label" for="simpleinput">Text</label>
-                                        <input type="text" id="simpleinput" class="form-control">
+                                    <?php endif?>
+                                    <?php if(!empty($_SESSION['success'])):?>
+                                        <div class="alert alert-success fade show" role="alert">
+                                            <?=$_SESSION['success']?>
+                                            <?php unset ($_SESSION['success'])?>
+                                        </div>
+                                    <?php endif?>
+                                    <form method=post action="task_11_handler.php">
+                                        <div class="form-group">
+                                        	<label class="form-label" for="simpleinput">Email</label>
+                                        <input  name='email' type="text" id="simpleinput" class="form-control">
+                                        </div>
+
+                                        <label class="form-label" for="simpleinput">Password</label>
+                                        <input name='password' type="password" id="simpleinput" class="form-control">
                                         <button class="btn btn-success mt-3">Submit</button>
                                     </form>
                                 </div>
