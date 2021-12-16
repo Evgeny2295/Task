@@ -37,7 +37,7 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form enctype="multipart/form-data" method="post" action="task_16_handler..php">
+                                        <form enctype="multipart/form-data" method="post" action="task_16_handler.php">
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
                                             <input name="image" type="file" id="simpleinput" class="form-control">
