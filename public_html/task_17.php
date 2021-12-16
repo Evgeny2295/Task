@@ -1,5 +1,6 @@
 <?php include_once 'task_16_functions.php'?>
 <?php $images = getImages('image')?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +38,10 @@
                             <div class="panel-content">
                                 <div class="panel-content">
                                     <div class="form-group">
-                                        <form enctype="multipart/form-data" method="post" action="task_16_handler..php">
+                                        <form enctype="multipart/form-data" method="post" action="task_17_handler.php">
                                             <div class="form-group">
                                                 <label class="form-label" for="simpleinput">Image</label>
-                                            <input name="image" type="file" id="simpleinput" class="form-control">
+                                                <input name="image[]" type="file" id="simpleinput" class="form-control" multiple>
                                             </div>
                                             <button class="btn btn-success mt-3">Submit</button>
                                         </form>
@@ -67,13 +68,13 @@
                                 <div class="panel-content image-gallery">
                                     <div class="row">
                                         <?php if(!empty($images)):?>
-                                        <?php foreach ($images as $image):?>
-                                            <div class="col-md-3 image">
-                                            <img src="/upload/<?=$image['name']?>">
-                                            </div>
-                                        <?php endforeach;?>
+                                            <?php foreach ($images as $image):?>
+                                                <div class="col-md-3 image">
+                                                    <img src="/upload/<?=$image['name']?>">
+                                                    <a class="btn btn-danger" href="task_17_delete.php?id=<?=$image['id']?>" onclick="confirm('Вы уверены?');">Удалить</a>
+                                                </div>
+                                            <?php endforeach;?>
                                         <?php endif?>
-
                                     </div>
                                 </div>
                             </div>

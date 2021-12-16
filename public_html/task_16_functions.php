@@ -10,10 +10,25 @@ function uploadToDb($table,$name){
 }
 
 
-function getImage($table){
+function getImages($table){
     global $pdo;
     $sql = "SELECT * FROM $table";
     $query=$pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();
+}
+
+function delete($table,$idImg){
+    global $pdo;
+    $sql = "DELETE FROM $table WHERE id=:id";
+    $query=$pdo->prepare($sql);
+    $query->execute(['id'=>$idImg]);
+}
+
+function getImage($table,$idImg){
+    global $pdo;
+    $sql = "SELECT * FROM $table WHERE id=:id";
+    $query=$pdo->prepare($sql);
+    $query->execute(['id'=>$idImg]);
+    return $query->fetch();
 }
